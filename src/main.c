@@ -272,7 +272,7 @@ typedef struct {
 
 static bool verify_flash_flags()
 {
-  CopyFlashFlags_t *flashFlags = (void*)FLASH_BASE+((flashPages-1)*PAGE_SIZE);
+  CopyFlashFlags_t *flashFlags = (CopyFlashFlags_t *)FLASH_BASE+((flashPages-1)*PAGE_SIZE);
   uint32_t crc = crcSlow(flashFlags, sizeof(CopyFlashFlags_t)-4);
   static sd_mbr_command_t compareCommand = {
       .command = SD_MBR_COMMAND_COMPARE
@@ -339,7 +339,7 @@ static bool verify_flash_flags()
 
 static void copy_flash()
 {
-  CopyFlashFlags_t *flashFlags = (void*)FLASH_BASE+((flashPages-1)*PAGE_SIZE);
+  CopyFlashFlags_t *flashFlags = (CopyFlashFlags_t *)FLASH_BASE+((flashPages-1)*PAGE_SIZE);
   static sd_mbr_command_t copyCommand = {
     .command = SD_MBR_COMMAND_COPY_SD
   };
